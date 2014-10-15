@@ -67,7 +67,7 @@ static void strlinker(ENQSTR *enqstrings, const char *str){
     * sizeof(char) so para garantir, sem esquecer o '\0'
     */
     aux = (char *) malloc( (strlen(str) + 1) * sizeof(char) );
-    strcpy(aux, str);
+    strcpy(aux, str); /* TODO (strcpy) is considered unsafe, substituir por strcpy_s */
     (*enqstrings)->str = aux;
 }
 
