@@ -195,16 +195,19 @@ char * esread( ENQSTR * enqstrings ){
 }
 
 void esrewind( ENQSTR *enqstrings ){
-    if( *enqstrings == NULL && is_single(enqstrings) )
+	if (*enqstrings == NULL)
+		return;
+
+    if( is_single(enqstrings) )
         return;
-    else{
-        if( (*enqstrings)->prev == *enqstrings ){
-            (*enqstrings)->prev = NULL;
-            return;
-        }
-        else
-            rewind_loop(enqstrings);
-    }
+
+	if( (*enqstrings)->prev == *enqstrings ){
+		(*enqstrings)->prev = NULL;
+		return;
+	}
+	else{
+		rewind_loop(enqstrings);
+	}
 }
 
 /* O ponteiro continua apontando para o mesmo local
