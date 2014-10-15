@@ -146,6 +146,7 @@ static void rewind_loop( ENQSTR * enqstring ) /* FIXME */
 ENQSTR *esopen( void ){
     ENQSTR *mem;
     mem = (ENQSTR *) malloc(sizeof(ENQSTR));
+	*mem = NULL;
     return mem;
 }
 
