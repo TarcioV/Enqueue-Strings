@@ -211,9 +211,13 @@ void esrewind( ENQSTR *enqstrings ){
 /* O ponteiro continua apontando para o mesmo local
    mas nao tem o controle sobre ele */
 void esclose(ENQSTR *enqstring){
+	if (*enqstring == NULL)
+		return;
+
     esrewind(enqstring);
-    /* sempre liberar a string primeiro */
-    if( !is_single(enqstring) ){ /* Se nao e single concerteza tem next */
+    
+	/* sempre liberar a string primeiro */
+    if( !is_single(enqstring) ){ /* Se nao e' single concerteza tem next */
         struct _EnqStr *tmp; /* guarda o ponteiro antes de perder o acesso */
 
         while( (*enqstring)->next != NULL && (*enqstring)->next->prev != *enqstring ){
